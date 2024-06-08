@@ -22,9 +22,14 @@ return {
       local neotest = require 'neotest'
 
       neotest.setup {
-        adapters = { require 'neotest-go' {
-          recursive_run = true,
-        } },
+        adapters = {
+          require 'neotest-go' {
+            recursive_run = true,
+            args = {
+              buildFlags = {},
+            },
+          },
+        },
       }
 
       vim.keymap.set('n', '<leader>ts', neotest.summary.toggle, { desc = '[T]est: [S]ummary' })
